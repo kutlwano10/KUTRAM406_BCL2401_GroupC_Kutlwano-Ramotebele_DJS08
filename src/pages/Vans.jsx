@@ -15,8 +15,8 @@ export const Vans = () => {
    * when using {} it must return something
    */
   const vansElements = vans.map((van) => (
-    <div key={van.id} className="van-title">
-      <img src={van.imageUrl} alt={van.name}/>
+    <div key={van.id} className="van-tile">
+      <img src={van.imageUrl} alt={van.name} />
       <div className="van-info">
         <h3>{van.name}</h3>
         <p>
@@ -29,7 +29,8 @@ export const Vans = () => {
   ));
 
   return (
-    <div className="can-list-container">
+    <div className="van-list-container">
+        <h1>Explore Our Vans options</h1>
       <div className="van-list">{vansElements}</div>
     </div>
   );
