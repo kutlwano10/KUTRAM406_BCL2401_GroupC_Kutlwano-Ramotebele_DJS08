@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const Vans = () => {
   const [vans, setVans] = useState([]);
@@ -16,21 +17,23 @@ export const Vans = () => {
    */
   const vansElements = vans.map((van) => (
     <div key={van.id} className="van-tile">
-      <img src={van.imageUrl} alt={van.name} />
-      <div className="van-info">
-        <h3>{van.name}</h3>
-        <p>
-          ${van.price}
-          <span>/day</span>
-        </p>
-      </div>
-      <i className={`van-type ${van.type} Selected`}>{van.type}</i>
+      <Link to={`/vans/${van.id}`}>
+        <img src={van.imageUrl} alt={van.name} />
+        <div className="van-info">
+          <h3>{van.name}</h3>
+          <p>
+            ${van.price}
+            <span>/day</span>
+          </p>
+        </div>
+        <i className={`van-type ${van.type} Selected`}>{van.type}</i>
+      </Link>
     </div>
   ));
 
   return (
     <div className="van-list-container">
-        <h1>Explore Our Vans options</h1>
+      <h1>Explore Our Vans options</h1>
       <div className="van-list">{vansElements}</div>
     </div>
   );
