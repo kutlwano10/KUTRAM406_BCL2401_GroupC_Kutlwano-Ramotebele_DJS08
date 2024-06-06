@@ -161,6 +161,8 @@ footer {
 /*** ABOUT PAGE ***/
 .about-hero-image {
   max-width: 100%;
+  border-radius: 8px;
+  
 }
 
 .about-page-content {
@@ -299,8 +301,8 @@ i[class*="van-type-"] {
   text-decoration: none;
 }
 
-.van-detail-container .back-button:visited {
-}
+/* .van-detail-container .back-button:visited {
+} */
 
 .van-detail-container .back-button span {
   text-decoration: underline;
