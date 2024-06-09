@@ -10,21 +10,29 @@ import { Income } from "./pages/Host/Income";
 import { Reviews } from "./pages/Host/Reviews";
 import { Dashboard } from "./pages/Host/Dashboard";
 import { HostLayout } from "../components/HostLayout";
+import { HostVans } from "./pages/Host/HostVans";
+import { HostVansDetails } from "./pages/Host/HostVansDetails";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/vans" element={<Vans />} />
-          <Route path="/vans/:id" element={<VansDetails />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+
+          <Route path="vans">
+            <Route index element={<Vans />} />
+            <Route path=":id" element={<VansDetails />} />
+          </Route>
           {/*Used HostLayoout to nest Dashboard, income & reviews */}
-          <Route element={<HostLayout />}>
-            <Route path="/host" element={<Dashboard />} />
-            <Route path="/host/income" element={<Income />} />
-            <Route path="/host/reviews" element={<Reviews />} />
+          <Route path="host" element={<HostLayout />}>
+            <Route index element={<Dashboard />} />
+            
+            <Route path="income" element={<Income />} />
+            <Route path="reviews" element={<Reviews />} />
+            <Route path="vans" element={<HostVans/>}/>
+            <Route path="vans/:id" element={<HostVansDetails/>}/>
           </Route>
         </Route>
       </Routes>
