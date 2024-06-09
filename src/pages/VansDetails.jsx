@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import React from "react";
 import { Container } from "postcss";
 export const VansDetails = () => {
   const params = useParams();
@@ -16,9 +17,13 @@ export const VansDetails = () => {
       .then((data) => setVan(data.vans));
   }, [params.id]);
 
+  const location = useLocation();
+
+  const search = location.state?.search || "";
+
   return (
     <div className="van-detail-container">
-      <Link to=".." relative="path" className="back-button">
+      <Link to={`..${search}`} relative="path" className="back-button">
         &larr; <span>Back to all vans</span>
       </Link>
       {van ? (
