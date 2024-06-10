@@ -16,6 +16,7 @@ import { HostVanPrice } from "./pages/Host/HostVanPrice";
 import { HostVanPhotos } from "./pages/Host/HostVanPhotos";
 import { HostVanInfo } from "./pages/Host/HostVanInfo";
 import { NotFound } from "./pages/NotFound";
+import { Login } from "./pages/Login";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
+          <Route path="login" element={<Login/>}/>
 
           <Route path="vans">
             <Route index element={<Vans />} />
