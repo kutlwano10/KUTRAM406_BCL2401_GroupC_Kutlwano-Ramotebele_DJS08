@@ -1,14 +1,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { getVans } from "../../api";
 
 export const Vans = () => {
   const [vans, setVans] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    fetch("/api/vans")
-      .then((response) => response.json())
-      .then((data) => setVans(data.vans));
+    const loadVans=async()=> {
+      setLoading(true)
+      const data = await getVans()
+      setVans(data)
+      setLoading(false)
+    }
+    loadVans()
   }, []);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -36,6 +42,9 @@ export const Vans = () => {
       </Link>
     </div>
   ));
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
 
   function handleFilterChange(key, value) {
     setSearchParams((prevParams) => {
